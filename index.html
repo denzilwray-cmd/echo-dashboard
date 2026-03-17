@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desk Dashboard</title>
+
+<style>
+body {
+    margin: 0;
+    background: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.clock {
+    text-align: center;
+    font-size: 120px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.date {
+    text-align: center;
+    font-size: 30px;
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+/* Now Playing Panel */
+.now-playing {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#album-art {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+#song-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#artist {
+    font-size: 22px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.music-controls button {
+    background-color: #1DB954;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background 0.3s;
+}
+
+.music-controls button:hover {
+    background-color: #1ed760;
+}
+
+</style>
+</head>
+
+<body>
+
+<div>
+    <div class="clock" id="clock"></div>
+    <div class="date" id="date"></div>
+</div>
+
+<div class="now-playing">
+    <img src="https://via.placeholder.com/180" id="album-art" alt="Album Art">
+    <div id="song-title">Song Title</div>
+    <div id="artist">Artist Name</div>
+    <div class="music-controls">
+        <button onclick="window.location='https://music.youtube.com'">Play / Pause</button>
+        <button onclick="window.location='https://music.youtube.com/playlist?list=NEXT'">Next</button>
+    </div>
+</div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    const date = now.toDateString();
+
+    document.getElementById('clock').innerText = time;
+    document.getElementById('date').innerText = date;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+</body>
+</html>
